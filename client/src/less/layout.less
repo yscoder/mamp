@@ -1,0 +1,39 @@
+@import './variable';
+
+.wrap {
+  background: @bodyBackground;
+}
+.header {
+  height: @headerHeiht;
+  background: #404040;
+}
+.container {
+  padding: 0 @containerPadding;
+  max-width: @containerWrap;
+  margin-left: auto;
+  margin-right: auto;
+}
+.logo {
+  float: left;
+  width: 120px;
+  height: 32px;
+  line-height: 32px;
+  margin: 16px 24px 16px 0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+.mainWrap {
+  position: relative;
+  width: 100% - @containerPadding * 2;
+  max-width: @containerWrap;
+  min-height: ~'calc(100vh - @{headerHeiht})';
+  margin: 0 auto;
+  padding: @layoutGap 0;
+}
+
+:export {
+  headerHeiht: @headerHeiht;
+}

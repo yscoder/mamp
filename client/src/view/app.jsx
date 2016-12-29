@@ -1,39 +1,33 @@
-import React from 'react'
-import Dropdown from 'components/dropdown'
+import React, { Component } from 'react'
+import { Menu } from 'antd'
+import style from 'less/layout'
 
-/**
- * 无状态组件
- *
- * @param {any} props
- */
-const ShowCity = props => <span> 你选择了：{props.item}</span>
+const Logo = props => <h1 className={style.logo}>MAMP</h1>
 
-/**
- * 组合组件
- *
- * @export
- * @class App
- * @extends {React.Component}
- */
-export default class App extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            selectItem: '河南省',
-            data: ['河南省', '河北省', '湖南省', '湖北省']
-        }
-    }
-
-    onSelected = (item) => {
-        this.setState({ selectItem: item })
-    }
-
-    render() {
-        return (
-            <div>
-                <Dropdown data={this.state.data} onChange={this.onSelected} />
-                <ShowCity item={this.state.selectItem} />
+const headerStyle = { lineHeight: style.headerHeiht, border: 'none', float: 'right' }
+const Header = props => {
+    return (
+        <div className={style.header}>
+            <div className={style.container}>
+                <Logo />
+                <Menu theme="dark" mode="horizontal" style={headerStyle}
+                    defaultSelectedKeys={['1']}>
+                    <Menu.Item key="1">首页</Menu.Item>
+                    <Menu.Item key="2">导航</Menu.Item>
+                    <Menu.Item key="3">导航</Menu.Item>
+                </Menu>
             </div>
-        )
-    }
+        </div>
+    )
 }
+
+const App = ({ children }) => {
+    return (
+        <div className={style.wrap}>
+            <Header />
+            <div className={style.mainWrap}>{children}</div>
+        </div>
+    )
+}
+
+export default App

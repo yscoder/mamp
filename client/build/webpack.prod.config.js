@@ -1,5 +1,7 @@
-const webpack = require('webpack')
 const path = require('path')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const config = require('./webpack.config')
 const loaders = require('./webpack.loaders')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -25,21 +27,11 @@ loaders.push({
     loader: ExtractTextPlugin.extract('style', 'css')
 })
 
-module.exports = {
-    entry: [
-        './src/main.jsx'
-    ],
+module.exports = merge(config, {
     output: {
         publicPath: '/',
-        path: path.join(__dirname, '../server/public'),
+        path: path.join(__dirname, '../../server/public'),
         filename: '[chunkhash].js'
-    },
-    resolve: {
-        extensions: ['', '.js', '.jsx', '.css', '.less'],
-        root: [
-            path.join(__dirname, './src'),
-            path.join(__dirname, './node_modules')
-        ]
     },
     module: {
         loaders
@@ -72,9 +64,10 @@ module.exports = {
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
-                removeAttributeQuotes: true
+                removeAttributeQuotes: true,
+                removeScriptTypeAttributes: true
             }
         }),
         new webpack.optimize.DedupePlugin()
     ]
-}
+})

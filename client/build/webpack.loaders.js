@@ -2,7 +2,13 @@ module.exports = [
     {
         test: /\.jsx?$/,
         exclude: /(node_modules|public\/)/,
-        loader: "babel"
+        loader: "babel",
+        query: {
+            plugins: [
+                ['import', [{ libraryName: "antd", style: 'css' }]],
+            ],
+            cacheDirectory: true
+        }
     },
     {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,

@@ -1,11 +1,12 @@
-const webpack = require('webpack')
 const path = require('path')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const config = require('./webpack.config')
 const loaders = require('./webpack.loaders')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const HOST = process.env.HOST || "127.0.0.1"
-const PORT = process.env.PORT || "8888"
+const PORT = process.env.PORT || "3000"
 
 // global css
 loaders.push({
@@ -37,29 +38,14 @@ loaders.push({
     ]
 })
 
-module.exports = {
-    entry: [
-        'react-hot-loader/patch',
-        './src/main.jsx' // your app's entry point
-    ],
-    devtool: process.env.WEBPACK_DEVTOOL || 'eval-source-map',
-    output: {
-        publicPath: '/',
-        path: path.join(__dirname, 'public'),
-        filename: 'bundle.js'
-    },
-    resolve: {
-        extensions: ['', '.js', '.jsx', '.css', '.less'],
-        root: [
-            path.join(__dirname, './src'),
-            path.join(__dirname, './node_modules')
-        ]
-    },
+config.entry.unshift('react-hot-loader/patch')
+
+module.exports = merge(config, {
     module: {
         loaders
     },
     devServer: {
-        contentBase: "./public",
+        contentBase: '../public',
         // do not print bundle build stats
         noInfo: true,
         // enable HMR
@@ -72,11 +58,15 @@ module.exports = {
         host: HOST
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"development"'
+            }
+        }),
         new webpack.NoErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new DashboardPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html'
         })
     ]
-}
+})

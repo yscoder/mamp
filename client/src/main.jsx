@@ -1,10 +1,18 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+import { browserHistory, Router, Route, IndexRoute } from 'react-router'
 import App from 'view/app'
+import Project from 'view/project'
+import Index from 'view/Index'
 
 render(
-    <AppContainer><App /></AppContainer>,
+    <Router history={browserHistory}>
+        <Route path="/" component={App}>
+            <IndexRoute component={Index} />
+            <Route path="project/:id" component={Project} />
+        </Route>
+    </Router>,
     document.getElementById('app')
 )
 
