@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import { Menu } from 'antd'
 import style from 'less/layout'
+
+const MenuItem = Menu.Item
 
 const Logo = props => <h1 className={style.logo}>MAMP</h1>
 
@@ -12,9 +15,9 @@ const Header = props => {
                 <Logo />
                 <Menu theme="dark" mode="horizontal" style={headerStyle}
                     defaultSelectedKeys={['1']}>
-                    <Menu.Item key="1">首页</Menu.Item>
-                    <Menu.Item key="2">导航</Menu.Item>
-                    <Menu.Item key="3">导航</Menu.Item>
+                    <MenuItem key="1"><Link to="/">首页</Link></MenuItem>
+                    <MenuItem key="2">导航</MenuItem>
+                    <MenuItem key="3">导航</MenuItem>
                 </Menu>
             </div>
         </div>

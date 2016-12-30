@@ -1,0 +1,22 @@
+@import './variable';
+
+@subtractH: @headerHeiht + @layoutGap * 2;
+
+.wrap {
+  min-height: ~'calc(100vh - @{subtractH})';
+  padding: @layoutGap;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 4px;
+}
+.header {
+  margin-bottom: @layoutGap
+}
+
+.contwrap {
+
+}
+
+.listhd {
+  margin-bottom: @layoutGap / 2
+}

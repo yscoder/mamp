@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 import { Card, Col, Row, Button, Menu, Dropdown, Icon } from 'antd'
 import style from 'less/index'
 
+const menuClick = ({key}) => {
+    console.log(333)
+}
+
 const menu = (
-    <Menu>
-        <Menu.Item key="0"><Icon type="edit" /> 修改</Menu.Item>
-        <Menu.Item key="1"><Icon type="delete" /> 删除</Menu.Item>
+    <Menu onClick={menuClick}>
+        <Menu.Item key="edit"><Icon type="edit" /> 修改</Menu.Item>
+        <Menu.Item key="delete"><Icon type="delete" /> 删除</Menu.Item>
     </Menu>
 )
 
 const CardControl = (
     <Dropdown overlay={menu} trigger={['click']}>
-        <a className="ant-dropdown-link" href="#">
+        <a className={style.dropdownlink} href="#">
             <Icon type="setting" />
         </a>
     </Dropdown>
@@ -23,7 +27,7 @@ const CardItem = props => {
         <Card title={props.item.name} extra={CardControl} bordered={false}>
             <div className={style.cardcont}>{props.item.desc}</div>
             <div className={style.cardfooter}>
-                <Button type="primary" onClick={props.toView.bind(this, props.item.id)}>查看</Button>
+                <Link className="ant-btn ant-btn-primary" to={"/project/" + props.item.name}>查看</Link>
             </div>
         </Card>
     )
@@ -41,7 +45,6 @@ const AddCard = props => {
         </Card>
     )
 }
-
 
 export default class Index extends Component {
     constructor(props) {
@@ -62,10 +65,6 @@ export default class Index extends Component {
         }
     }
 
-    toView = id => {
-        browserHistory.push('/project/' + id)
-    }
-
     render() {
         return (
             <div>
@@ -73,7 +72,7 @@ export default class Index extends Component {
                     {this.state.projects.map(item => {
                         return (
                             <Col span={6} key={item.id}>
-                                <CardItem item={item} toView={this.toView} />
+                                <CardItem item={item} />
                             </Col>
                         )
                     })}

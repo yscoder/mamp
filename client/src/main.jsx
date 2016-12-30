@@ -10,7 +10,7 @@ render(
     <Router history={browserHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={Index} />
-            <Route path="project/:id" component={Project} />
+            <Route path="project/:name" component={Project} />
         </Route>
     </Router>,
     document.getElementById('app')
