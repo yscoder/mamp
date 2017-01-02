@@ -4,6 +4,12 @@ import style from 'less/project'
 
 const Panel = Collapse.Panel
 
+const ItemHeader = props => {
+    return (
+        <div className=""></div>
+    )
+}
+
 export default class List extends Component {
     constructor(props) {
         super(props)
@@ -11,14 +17,14 @@ export default class List extends Component {
             list: [
                 {
                     id: 13414,
-                    title: '获取数据',
+                    title: '获取所有用户数据',
                     path: '/a/b',
                     method: 'get',
                     response: 'sdgsga'
                 },
                 {
                     id: 4363463,
-                    title: '获取数据',
+                    title: '增加一个用户',
                     path: '/a/b',
                     method: 'get',
                     response: 'sdgsga'
@@ -34,7 +40,7 @@ export default class List extends Component {
                     <Button icon="plus">新增接口</Button>
                 </div>
                 <Collapse bordered={false} defaultActiveKey={['1']}>
-                     {this.state.list.map(item => {
+                    {this.state.list.map(item => {
                         return (
                             <Panel header={item.title} key={item.id}>
                                 <p>{item.response}</p>

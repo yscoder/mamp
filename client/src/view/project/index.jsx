@@ -30,7 +30,8 @@ export default class Projects extends Component {
                     <TabPane tab="内容管理" key="1">
                         <List />
                     </TabPane>
-                    <TabPane tab="项目设置" key="2">项目设置</TabPane>
+                    <TabPane tab="项目动态" key="2">项目动态</TabPane>
+                    <TabPane tab="项目设置" key="3">项目设置</TabPane>
                 </Tabs>
             </div>
         )
