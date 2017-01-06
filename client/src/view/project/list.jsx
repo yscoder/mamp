@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
-import { Button, Collapse } from 'antd'
+import { Row, Col, Button, Collapse } from 'antd'
 import style from 'less/project'
 
 const Panel = Collapse.Panel
 
-const ItemHeader = props => {
+const ItemHeader = item => {
     return (
-        <div className=""></div>
+        <Row type="flex">
+            <Col span={22}>
+                <span className={style.api_method + ' ' + style['api_' + item.method]}>
+                    {item.method.toUpperCase()}
+                </span>
+                <span className={style.api_title}>{item.title}</span>
+            </Col>
+            <Col span={2}><div className={style.api_date}>2017-01-06</div></Col>
+        </Row>
     )
 }
 
@@ -42,7 +50,7 @@ export default class List extends Component {
                 <Collapse bordered={false} defaultActiveKey={['1']}>
                     {this.state.list.map(item => {
                         return (
-                            <Panel header={item.title} key={item.id}>
+                            <Panel header={ItemHeader(item)} key={item.id}>
                                 <p>{item.response}</p>
                             </Panel>
                         )
