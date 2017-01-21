@@ -3,22 +3,19 @@
 @subtractH: @headerHeiht + @layoutGap * 2;
 
 .wrap {
-  min-height: ~'calc(100vh - @{subtractH})';
-  padding: @layoutGap;
-  overflow: hidden;
+  flex: 1;
+  flex-direction: row;
+  padding: @layoutGap 0;
   background: #fff;
   border-radius: 4px;
 }
-.header {
-  margin-bottom: @layoutGap
+
+.side_menu {
+  width: 320px;
 }
-
-.contwrap {
-
-}
-
-.listhd {
-  margin-bottom: @layoutGap / 2
+.content {
+  flex: 1;
+  padding: 0 @layoutGap;
 }
 
 .api_method {

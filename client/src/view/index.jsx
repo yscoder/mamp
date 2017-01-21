@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { browserHistory, Link } from 'react-router'
-import { Card, Col, Row, Button, Menu, Dropdown, Icon } from 'antd'
+import { Layout, Card, Col, Row, Button, Menu, Dropdown, Icon } from 'antd'
 import style from 'less/index'
 
 const menuClick = ({key}) => {
@@ -16,7 +16,7 @@ const menu = (
 
 const CardControl = (
     <Dropdown overlay={menu} trigger={['click']}>
-        <a className={style.dropdownlink} href="#">
+        <a className={style.dropdown_link} href="#">
             <Icon type="setting" />
         </a>
     </Dropdown>
@@ -25,8 +25,8 @@ const CardControl = (
 const CardItem = props => {
     return (
         <Card title={props.item.name} extra={CardControl} bordered={false}>
-            <div className={style.cardcont}>{props.item.desc}</div>
-            <div className={style.cardfooter}>
+            <div className={style.card_cont}>{props.item.desc}</div>
+            <div className={style.card_footer}>
                 <Link className="ant-btn ant-btn-primary" to={"/project/" + props.item.name}>查看</Link>
             </div>
         </Card>
@@ -36,7 +36,7 @@ const CardItem = props => {
 const AddCard = props => {
     return (
         <Card>
-            <Row type="flex" justify="center" align="middle" className={style.addcard}>
+            <Row type="flex" justify="center" align="middle" className={style.add_card}>
                 <Col span={24}>
                     <Icon type="plus" />
                     <div>添加项目</div>
@@ -60,6 +60,11 @@ export default class Index extends Component {
                     id: 321321,
                     name: 'BCMP',
                     desc: '萨发发发撒法立法萨洛夫萨拉姆法拉'
+                },
+                {
+                    id: 223415,
+                    name: 'BCMP',
+                    desc: '萨发发发撒法立法萨洛夫萨拉姆法拉'
                 }
             ]
         }
@@ -67,18 +72,20 @@ export default class Index extends Component {
 
     render() {
         return (
-            <div>
+            <Layout style={{ overflow: 'hidden'}}>
                 <Row gutter={16}>
                     {this.state.projects.map(item => {
                         return (
-                            <Col span={6} key={item.id}>
+                            <Col sm={8} md={6} lg={4} key={item.id} className={style.col_space}>
                                 <CardItem item={item} />
                             </Col>
                         )
                     })}
-                    <Col span={6} key="action"><AddCard /></Col>
+                    <Col sm={8} md={6} lg={4} key="action" className={style.col_space}>
+                        <AddCard />
+                    </Col>
                 </Row>
-            </div>
+            </Layout>
         )
     }
 }

@@ -1,16 +1,22 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import { browserHistory, Router, Route, IndexRoute } from 'react-router'
+import { hashHistory, Router, Route, IndexRoute } from 'react-router'
 import App from 'view/app'
 import Project from 'view/project'
+import Detail from 'view/Detail'
+import Api from 'view/api'
 import Index from 'view/Index'
+import 'less/global.less'
 
 render(
-    <Router history={browserHistory}>
-        <Route path="/" component={App}>
+    <Router history={hashHistory}>
+        <Route path="/" breadcrumbName="所有项目" component={App}>
             <IndexRoute component={Index} />
-            <Route path="project/:name" component={Project} />
+            <Route breadcrumbName="name" path="project/:name" component={Project}>
+                <IndexRoute component={Detail} />
+                <Route breadcrumbName="uid" path="api/:uid" component={Api} />
+            </Route>
         </Route>
     </Router>,
     document.getElementById('app')

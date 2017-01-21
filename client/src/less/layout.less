@@ -5,7 +5,6 @@
 }
 .header {
   padding: 0 @containerPadding;
-  height: @headerHeiht;
   background: #404040;
 }
 .container {
@@ -25,13 +24,10 @@
   border-radius: 4px;
 }
 
-.mainWrap {
-  position: relative;
-  width: 100% - @containerPadding * 2;
-  max-width: @containerWrap;
-  min-height: ~'calc(100vh - @{headerHeiht})';
-  margin: 0 auto;
-  padding: @layoutGap 0;
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px @layoutGap;
 }
 
 :export {
