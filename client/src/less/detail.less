@@ -1,0 +1,101 @@
+@import './variable';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.enabled {
+  margin-left: 1em;
+  vertical-align: top;
+  &:global {
+    &.ant-switch-checked {
+      border-color: #4CAF50;
+      background-color: #4CAF50;
+    }
+  }
+}
+
+.desc {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.main {
+  padding: @layoutGap 0;
+  border-top: 1px solid @borderColor;
+  background: #fff;
+  :global {
+    .ant-card {
+      width: 260px;
+      margin-bottom: @layoutGap;
+      &:hover {
+        box-shadow: none;
+        border-color: @borderColor
+      }
+    }
+    .ant-card-head {
+      padding: 0 15px;
+      height: 36px;
+      line-height: 36px;
+      background: @grayLightest;
+    }
+    .ant-card-extra {
+      top: 8px;
+      font-size: 14px;
+    }
+    .ant-card-bordered {
+      border-radius: 3px;
+    }
+    .ant-card-body {
+      padding: 15px;
+    }
+    .ant-form-item {
+      margin-bottom: 8px;
+      &:last-child {
+        margin-bottom: 0
+      }
+    }
+  }
+}
+
+.base_path {
+  width: 100%;
+  text-align: left;
+  border-color: @primaryColorLighter;
+  background: @primaryColorLightest;
+}
+
+.member {
+  border: none;
+  background: @primaryColorLightest;
+}
+
+.delete {
+  &:global {
+    &.ant-card:hover {
+      border-color: @errorColor
+    }
+  }
+}
+.delete_btn {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: @errorColor;
+  &:hover {
+    color: #fff;
+    background: lighten(@errorColor, 10%);
+    border-color: @errorColor;
+  }
+  &:active {
+    color: #fff;
+    background: @errorColor;
+    border-color: darken(@errorColor, 15%);
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.3);
+  }
+}
