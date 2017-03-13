@@ -11,6 +11,12 @@
 .side_menu {
   width: 320px;
   min-height: 100%;
+  :global {
+    .ant-menu-item,
+    .ant-menu-submenu .ant-menu-submenu-title {
+      font-size: 14px
+    }
+  }
 }
 .content {
   padding: 0 @layoutGap;

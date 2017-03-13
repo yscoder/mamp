@@ -5,7 +5,7 @@
   "author": "yscoder <634206017@qq.com>",
   "scripts": {
     "build": "webpack --config build/webpack.prod.config.js --progress --profile --colors",
-    "dev": "open http://localhost:3000 & webpack-dev-server --config build/webpack.dev.config --progress --profile --colors"
+    "dev": "start http://localhost:3100 & webpack-dev-server --config build/webpack.dev.config --progress --profile --colors"
   },
   "dependencies": {
     "antd": "^2.6.4",
