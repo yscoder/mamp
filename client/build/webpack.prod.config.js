@@ -59,8 +59,9 @@ module.exports = merge(config, {
             allChunks: true
         }),
         new HtmlWebpackPlugin({
-            template: './src/index.html',
             title: 'App',
+            template: './src/index.html',
+            filename: '../views/index.ejs',
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,

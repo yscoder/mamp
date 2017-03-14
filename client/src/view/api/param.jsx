@@ -11,9 +11,9 @@ export default class Param extends Component {
     render() {
         return (
            <Tabs defaultActiveKey="1">
-                <TabPane tab="Tab 1" key="1">Tab 1</TabPane>
-                <TabPane tab="Tab 2" disabled key="2">Tab 2</TabPane>
-                <TabPane tab="Tab 3" key="3">Tab 3</TabPane>
+                <TabPane tab="Params" key="1">params</TabPane>
+                <TabPane tab="Body" disabled key="2">body</TabPane>
+                <TabPane tab="Query" key="3">query</TabPane>
             </Tabs>
         )
     }

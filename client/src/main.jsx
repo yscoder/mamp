@@ -12,9 +12,5 @@ render(
 )
 
 if (module && module.hot) {
-    // module.hot.accept('./view/app.jsx', () => {
-    //     const Next = require('./view/app.jsx').default
-    //     reactRender(Next)
-    // })
     module.hot.accept()
 }
