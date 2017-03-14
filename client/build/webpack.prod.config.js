@@ -60,7 +60,7 @@ module.exports = merge(config, {
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            title: 'Webpack App',
+            title: 'App',
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
